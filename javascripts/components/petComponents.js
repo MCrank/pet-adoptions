@@ -27,4 +27,11 @@ const petsBuilder = (petArray) => {
   printToDom(newString, 'pets');
 };
 
-export { setPetsArray, getPetsArray, petsBuilder };
+const filterSelectBuilder = (filterType) => {
+  console.log('FilterType', filterType);
+  const filterArray = [];
+  petsArray.map((pet) => `pet.${filterType}`).filter((value, index, self) => self.indexOf(value) === index).forEach(x => x.)
+  // return petsArray.map((pet) => pet.type).filter((value, index, self) => self.indexOf(value) === index);
+};
+
+export { setPetsArray, getPetsArray, petsBuilder, filterSelectBuilder };

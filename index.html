@@ -12,7 +12,35 @@
 </head>
 
 <body>
-    <h1>Petapalooza Adoptions</h1>
+    <h1 class="text-center">Petapalooza Adoptions</h1>
+
+    <form class="form-inline justify-content-center my-4">
+        <div class="form-group w-25">
+            <label for="petTypeSelect" class="mr-3">Select the type of pet:</label>
+            <select name="petTypeSelect" id="petTypeSelect" class="filter-selects form-control w-50" style="display: inline;">
+                <option selected>Choose...</option>
+                <div id="options-type">
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                    <option value="dino">Dino</option>
+                </div>
+            </select>
+        </div>
+        <div class="form-group w-25">
+            <label for="petColorSelect" class="mr-3">Which color do you prefer:</label>
+            <select name="petColorSelect" id="petColorSelect" class="filter-selects form-control w-50">
+                <option selected>Choose...</option>
+                <div id="options-type">
+                    <option value="blue">Blue</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="poop">Poop</option>
+                </div>
+            </select>
+        </div>
+        <div class="form-group">
+            <button id="clear-filter" type="button" class="btn btn-info btn">Clear Filter</button>
+        </div>
+    </form>
 
     <div class="container-fuid">
         <div class="row text-center justify-content-center" id="pets"></div>
