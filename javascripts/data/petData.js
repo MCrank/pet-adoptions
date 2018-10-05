@@ -1,9 +1,9 @@
+import { setPetsArray, getPetsArray, petsBuilder } from '../components/petComponents.js';
+
 function requestData() {
   const data = JSON.parse(this.responseText);
-  console.log(data.pets);
-  // Put your functions here to handle the 'load' event
-  // setCharacters(data.characters);
-  // charactersBuilder(getCharacterz());
+  setPetsArray(data.pets);
+  petsBuilder(getPetsArray());
 }
 function dataLoadError() {
   console.log('Failed to retrieve data source');
