@@ -1,9 +1,9 @@
-import { setPetsArray, getPetsArray, petsBuilder, filterTypeBuilder } from '../components/petComponents.js';
+import { setPetsArray, getPetsArray, petsBuilder, filterBuilder } from '../components/petComponents.js';
 
 function requestData() {
   const data = JSON.parse(this.responseText);
   setPetsArray(data.pets);
-  filterTypeBuilder('type');
+  filterBuilder('type');
   petsBuilder(getPetsArray());
 }
 function dataLoadError() {
