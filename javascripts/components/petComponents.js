@@ -1,5 +1,4 @@
 import { printToDom } from '../helpers/util.js';
-// import { getPets } from '../data/petData.js';
 
 let petsArray = [];
 
@@ -27,4 +26,43 @@ const petsBuilder = (petArray) => {
   printToDom(newString, 'pets');
 };
 
-export { setPetsArray, getPetsArray, petsBuilder };
+// Wow this murdered the hell out of me. Spent more time on the .map passing in the variable because the
+// bracket notation. Completely forgot about that...  :(
+const filterTypeBuilder = () => {
+  const filterParams = ['type', 'color'];
+  for (let i = 0; i < filterParams.length; i++) {
+    const pet = `pet.${filterParams[i]}`;
+    let newFilterString = `<option value="all" selected>All</Option>`;
+    petsArray
+      .map((pet) => pet[filterParams[i]])
+      .filter((value, index, self) => self.indexOf(value) === index)
+      .forEach((x) => {
+        newFilterString += `<option value="${x}">${x[0].toUpperCase() + x.slice(1)}</option>`;
+      });
+
+    if (filterParams[i] === 'type') {
+      printToDom(newFilterString, 'petTypeSelect');
+    } else if (filterParams[i] === 'color') {
+      printToDom(newFilterString, 'petColorSelect');
+    }
+  }
+};
+
+const filterAllPets = () => {
+  const pType = document.getElementById('petTypeSelect').value;
+  const pColor = document.getElementById('petColorSelect').value;
+  if (pType === 'all' && pColor === 'all') {
+    petsBuilder(petsArray);
+  } else if (pType !== 'all' && pColor === 'all') {
+    const filteredPets = petsArray.filter((x) => x.type === pType);
+    petsBuilder(filteredPets);
+  } else if (pType === 'all' && pColor !== 'all') {
+    const filteredPets = petsArray.filter((x) => x.color === pColor);
+    petsBuilder(filteredPets);
+  } else if (pType !== 'all' && pColor !== 'all') {
+    const filteredPets = petsArray.filter((x) => x.color === pColor && x.type === pType);
+    petsBuilder(filteredPets);
+  }
+};
+
+export { setPetsArray, getPetsArray, petsBuilder, filterTypeBuilder, filterAllPets };
