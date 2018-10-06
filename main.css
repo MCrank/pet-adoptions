@@ -1,3 +1,32 @@
 body {
   background-color: lightsteelblue;
+  font-family: 'Laila', serif;
+}
+
+.title {
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.cat {
+  background-color: lightblue;
+  color: darkblue;
+}
+
+.dog {
+  background-color: lightgreen;
+  color: darkgreen;
+}
+
+.dino {
+  background-color: lemonchiffon;
+  color: orange;
+}
+
+.card-header {
+  background-color: linen;
+  font-size: 1.3rem;
+}
+
+.card-footer {
+  font-size: 1.3rem;
 }

@@ -13,22 +13,23 @@ const getPetsArray = () => {
 const petsBuilder = (petArray) => {
   let newString = '';
   petArray.forEach((pet) => {
-    newString += `<div class="col-sm-2 card m-2 shadow">
-        <div class="card-header">${pet.name}</div>
+    newString += `<div class="card col-md-3 mx-5 my-3 p-0 shadow">
+        <div class="card-header font-italic font-weight-bold">${pet.name}</div>
             <div class="card-body">
-                <img class="card-img-top" src="${pet.imageUrl}" alt="Card image cap">
-                <h6 class="card-text">${pet.color}</h6>
+                <img class="card-img-top border border-secondary rounded" src="${pet.imageUrl}" alt="Card image cap">
+                <h6 class="card-text mt-3">${pet.color}</h6>
+                <hr>
                 <p class="card-text">${pet.specialSkill}</p>
             </div>
-        <div class="card-footer">${pet.type[0].toUpperCase() + pet.type.slice(1)}</div>
+        <div class="card-footer font-weight-bold text-capitalize ${pet.type}">${pet.type}</div>
     </div>`;
   });
   printToDom(newString, 'pets');
 };
 
 // Wow this murdered the hell out of me. Spent more time on the .map passing in the variable because the
-// bracket notation. Completely forgot about that...  :(
-const filterTypeBuilder = () => {
+// bracket notation which I totally forgot about :(
+const filterBuilder = () => {
   const filterParams = ['type', 'color'];
   for (let i = 0; i < filterParams.length; i++) {
     const pet = `pet.${filterParams[i]}`;
@@ -65,4 +66,4 @@ const filterAllPets = () => {
   }
 };
 
-export { setPetsArray, getPetsArray, petsBuilder, filterTypeBuilder, filterAllPets };
+export { setPetsArray, getPetsArray, petsBuilder, filterBuilder, filterAllPets };
