@@ -13,15 +13,15 @@ const getPetsArray = () => {
 const petsBuilder = (petArray) => {
   let newString = '';
   petArray.forEach((pet) => {
-    newString += `<div class="card col-md-3 mx-5 my-3 p-0 shadow">
-        <div class="card-header font-italic font-weight-bold">${pet.name}</div>
-            <div class="card-body">
-                <img class="card-img-top border border-secondary rounded" src="${pet.imageUrl}" alt="Card image cap">
-                <h6 class="card-text mt-3">${pet.color}</h6>
-                <hr>
-                <p class="card-text">${pet.specialSkill}</p>
-            </div>
-        <div class="card-footer font-weight-bold text-capitalize ${pet.type}">${pet.type}</div>
+    newString += `<div class="card col-md-3 mx-5 my-3 p-0 border border-dark shadow">
+      <div class="card-header font-italic font-weight-bold border-bottom border-dark">${pet.name}</div>
+          <div class="card-body">
+              <img class="card-img-top border border-secondary rounded p-2" src="${pet.imageUrl}" alt="Card image cap">
+              <h6 class="card-text mt-3">${pet.color}</h6>
+              <hr>
+              <p class="card-text">${pet.specialSkill}</p>
+          </div>
+      <div class="card-footer font-weight-bold text-capitalize ${pet.type}">${pet.type}</div>
     </div>`;
   });
   printToDom(newString, 'pets');
