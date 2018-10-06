@@ -1,5 +1,4 @@
 import { printToDom } from '../helpers/util.js';
-// import { getPets } from '../data/petData.js';
 
 let petsArray = [];
 
@@ -27,11 +26,26 @@ const petsBuilder = (petArray) => {
   printToDom(newString, 'pets');
 };
 
-const filterSelectBuilder = (filterType) => {
-  console.log('FilterType', filterType);
-  const filterArray = [];
-  petsArray.map((pet) => `pet.${filterType}`).filter((value, index, self) => self.indexOf(value) === index).forEach(x => x.)
-  // return petsArray.map((pet) => pet.type).filter((value, index, self) => self.indexOf(value) === index);
+// Wow this murdered the hell out of me. Spent more time on the .map passing in the variable because the
+// bracket notation. Completely forgot about that...  :(
+const filterTypeBuilder = () => {
+  const filterParams = ['type', 'color'];
+  for (let i = 0; i < filterParams.length; i++) {
+    const pet = `pet.${filterParams[i]}`;
+    let newFilterString = `<option selected>All</Option>`;
+    petsArray
+      .map((pet) => pet[filterParams[i]])
+      .filter((value, index, self) => self.indexOf(value) === index)
+      .forEach((x) => {
+        newFilterString += `<option value="${x}">${x[0].toUpperCase() + x.slice(1)}</option>`;
+      });
+
+    if (filterParams[i] === 'type') {
+      printToDom(newFilterString, 'petTypeSelect');
+    } else if (filterParams[i] === 'color') {
+      printToDom(newFilterString, 'petColorSelect');
+    }
+  }
 };
 
-export { setPetsArray, getPetsArray, petsBuilder, filterSelectBuilder };
+export { setPetsArray, getPetsArray, petsBuilder, filterTypeBuilder };

@@ -1,14 +1,15 @@
-import { setPetsArray, getPetsArray, petsBuilder } from '../components/petComponents.js';
+import { setPetsArray, getPetsArray, petsBuilder, filterTypeBuilder } from '../components/petComponents.js';
 
 function requestData() {
   const data = JSON.parse(this.responseText);
   setPetsArray(data.pets);
+  filterTypeBuilder('type');
   petsBuilder(getPetsArray());
 }
 function dataLoadError() {
   console.log('Failed to retrieve data source');
 }
-const getPets = () => {
+const getPetsDb = () => {
   let myRequest = new XMLHttpRequest();
   myRequest.addEventListener('load', requestData);
   myRequest.addEventListener('error', dataLoadError);
@@ -16,4 +17,4 @@ const getPets = () => {
   myRequest.send();
 };
 
-export { getPets };
+export { getPetsDb };
