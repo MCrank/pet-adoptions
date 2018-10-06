@@ -1,19 +1,15 @@
+import { filterAllPets } from './components/petComponents.js';
+
 const filterSelectEvents = () => {
   const filterSelectInput = document.getElementsByClassName('filter-selects');
   for (let i = 0; i < filterSelectInput.length; i++) {
-    filterSelectInput[i].addEventListener('change', (event) => {
-      console.log(event);
+    filterSelectInput[i].addEventListener('change', () => {
+      filterAllPets();
     });
   }
 };
 
-const clearFilterEvents = () => {
-  const clearFilterBtn = document.getElementById('clear-filter');
-  //   clearFilterBtn.addEventListener('click', clearFilter);
-};
-
 const attachEvents = () => {
   filterSelectEvents();
-  clearFilterEvents();
 };
 export { attachEvents };

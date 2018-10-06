@@ -32,7 +32,7 @@ const filterTypeBuilder = () => {
   const filterParams = ['type', 'color'];
   for (let i = 0; i < filterParams.length; i++) {
     const pet = `pet.${filterParams[i]}`;
-    let newFilterString = `<option selected>All</Option>`;
+    let newFilterString = `<option value="all" selected>All</Option>`;
     petsArray
       .map((pet) => pet[filterParams[i]])
       .filter((value, index, self) => self.indexOf(value) === index)
@@ -48,4 +48,21 @@ const filterTypeBuilder = () => {
   }
 };
 
-export { setPetsArray, getPetsArray, petsBuilder, filterTypeBuilder };
+const filterAllPets = () => {
+  const pType = document.getElementById('petTypeSelect').value;
+  const pColor = document.getElementById('petColorSelect').value;
+  if (pType === 'all' && pColor === 'all') {
+    petsBuilder(petsArray);
+  } else if (pType !== 'all' && pColor === 'all') {
+    const filteredPets = petsArray.filter((x) => x.type === pType);
+    petsBuilder(filteredPets);
+  } else if (pType === 'all' && pColor !== 'all') {
+    const filteredPets = petsArray.filter((x) => x.color === pColor);
+    petsBuilder(filteredPets);
+  } else if (pType !== 'all' && pColor !== 'all') {
+    const filteredPets = petsArray.filter((x) => x.color === pColor && x.type === pType);
+    petsBuilder(filteredPets);
+  }
+};
+
+export { setPetsArray, getPetsArray, petsBuilder, filterTypeBuilder, filterAllPets };
